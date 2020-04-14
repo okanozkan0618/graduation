@@ -99,17 +99,9 @@ def recursively(data_points, centroids, total_iteration, anomaly, counter, temp)
             print("cluster - counter ", len(cluster0), " - ", counter)
         print("Left Node Finished...")
     if len(cluster1) <= limit * 2:
-        if len(cluster1) <= limit * 2:
-            print("Anomaly Detected !!!")
-            anomaly.append(cluster1)
-            temp = 1
-        else:
-            temp = 0
-            if counter < numberOfCluster:
-                counter = counter + 1
-                succesGroups.append(cluster1)
-            print("cluster - counter ", len(cluster1), " - ", counter)
-            print(limit, " FINISHED")
+        print("Anomaly Detected !!!")
+        anomaly.append(cluster1)
+        temp = 1
     else:
         temp = 0
         print("Right Node Starting...", len(cluster1))
@@ -159,7 +151,6 @@ if __name__ == "__main__":
     #DOSYAYA YAZDIRMA
 
     i = -1
-    j = -1
     anomalyIndexes = []
     extraordinary = 0
 
@@ -180,7 +171,7 @@ if __name__ == "__main__":
                         continue
 
     with open(fileName, 'r') as csvinput:
-        with open('kMeansClusteringOutput.csv', 'w',newline='') as csvoutput:
+        with open('kMeansClusteringOutput.csv', 'w', newline='') as csvoutput:
             writer = csv.writer(csvoutput)
             indexNumber = 0
             for row in csv.reader(csvinput):
@@ -198,4 +189,4 @@ if __name__ == "__main__":
     print("Number of Anomaly Groups: ", len(anomaly))
     print("Number of Success Groups: ", len(succesGroups))
     accuracy = (len(anomalyIndexes) + extraordinary) / len(normalized_data)
-    print("Accuracy : ",accuracy)
+    print("Accuracy : ", accuracy)
