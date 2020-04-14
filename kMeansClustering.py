@@ -68,17 +68,9 @@ def recursively(data_points, centroids, total_iteration, anomaly, counter, temp)
             cluster1.append(data[1])
     print(len(cluster0), len(cluster1))
     if len(cluster0) <= limit * 2:
-        if len(cluster0) <= limit * 2:
-            print("Anomaly Detected !!!")
-            anomaly.append(cluster0)
-            temp = 1
-        else:
-            temp = 0
-            if counter < numberOfCluster:
-                counter = counter + 1
-                succesGroups.append(cluster0)
-            print("cluster - counter ", len(cluster0), " - ", counter)
-            print(limit, " FINISHED")
+        print("Anomaly Detected !!!")
+        anomaly.append(cluster0)
+        temp = 1
     else:
         temp = 0
         print("Left Node Starting...", len(cluster0))
